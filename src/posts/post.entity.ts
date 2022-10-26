@@ -1,4 +1,18 @@
-import { Entity } from 'typeorm';
+import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class Post {}
+@ObjectType()
+export class Post {
+  @PrimaryGeneratedColumn('uuid')
+  @Field(() => ID)
+  id: string;
+
+  @Column()
+  @Field()
+  title: string;
+
+  @Column()
+  @Field()
+  authorId: string;
+}
