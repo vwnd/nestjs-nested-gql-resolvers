@@ -7,16 +7,12 @@ import {
   Parent,
 } from '@nestjs/graphql';
 import { Post } from 'src/posts/post.entity';
-import { PostsService } from 'src/posts/posts.service';
 import { Author } from './author.entity';
 import { AuthorsService } from './authors.service';
 
 @Resolver(() => Author)
 export class AuthorsResolver {
-  constructor(
-    private readonly authorsService: AuthorsService,
-    private readonly postsService: PostsService,
-  ) {}
+  constructor(private readonly authorsService: AuthorsService) {}
 
   @Query(() => [Author])
   authors() {
@@ -30,7 +26,6 @@ export class AuthorsResolver {
 
   @ResolveField(() => [Post])
   posts(@Parent() author: Author) {
-    const { id } = author;
-    return this.postsService.findAllByAuthor(id);
+    return this.authorsService.authorPosts(author.id);
   }
 }
