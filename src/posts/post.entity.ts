@@ -21,6 +21,6 @@ export class Post {
 
   @ManyToOne(() => Author)
   @JoinColumn()
-  @Field()
+  @Field(() => Author)
   author: Author;
 }
