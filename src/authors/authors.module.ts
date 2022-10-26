@@ -8,5 +8,6 @@ import { PostsModule } from 'src/posts/posts.module';
 @Module({
   imports: [TypeOrmModule.forFeature([Author]), PostsModule],
   providers: [AuthorsResolver, AuthorsService],
+  exports: [AuthorsService],
 })
 export class AuthorsModule {}

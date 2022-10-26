@@ -30,4 +30,17 @@ export class PostsService {
       },
     });
   }
+
+  async postAuthor(postId: string) {
+    const post = await this.postsRepository.findOne({
+      where: {
+        id: postId,
+      },
+      relations: {
+        author: true,
+      },
+    });
+
+    return post.author;
+  }
 }
