@@ -13,6 +13,8 @@ import { SqliteConnectionOptions } from 'typeorm/driver/sqlite/SqliteConnectionO
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: './data.db',
+      entities: ['dist/**/*.entity.{ts,js}'],
+      synchronize: true,
     } as SqliteConnectionOptions),
   ],
   controllers: [AppController],
