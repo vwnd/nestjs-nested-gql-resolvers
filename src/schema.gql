@@ -20,5 +20,6 @@ type Query {
 }
 
 type Mutation {
+  createPost(title: String!, authorId: String!): Post!
   createAuthor(name: String!): Author!
 }
