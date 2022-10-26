@@ -16,7 +16,7 @@ type Post {
 
 type Query {
   post: String!
-  author: String!
+  authors: [Author!]!
 }
 
 type Mutation {

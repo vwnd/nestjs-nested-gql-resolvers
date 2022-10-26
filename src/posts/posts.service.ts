@@ -20,4 +20,14 @@ export class PostsService {
 
     return this.postsRepository.save(post);
   }
+
+  findAllByAuthor(authorId: string): Promise<Post[]> {
+    return this.postsRepository.find({
+      where: {
+        author: {
+          id: authorId,
+        },
+      },
+    });
+  }
 }
